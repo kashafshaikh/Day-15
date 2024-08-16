@@ -26,6 +26,7 @@
 
 
 function areAnagrams(str1: string, str2: string): boolean {
+
     const normalize = (str: string): string => str.toLowerCase();
     str1 = normalize(str1);
     str2 = normalize(str2);
@@ -33,23 +34,25 @@ function areAnagrams(str1: string, str2: string): boolean {
     if (str1.length !== str2.length) {
         return false;
     }
-    
+
     const getCharCount = (str: string): { [key: string]: number } => {
         const charCount: { [key: string]: number } = {};
+
         for (let i = 0; i < str.length; i++) {                         
-            const char = str[i];                                       
+            const char = str[i];              
+
             if (charCount[char]) {
                 charCount[char]++;
             } else {
                 charCount[char] = 1;
             }
         }
-        return charCount;
-    };
 
+        return charCount;
+
+    };
     const charCount1 = getCharCount(str1);
     const charCount2 = getCharCount(str2);
-
     for (let char in charCount1) {
         if (charCount1[char] !== charCount2[char]) {
             return false;
@@ -126,10 +129,12 @@ console.log(areAnagrams("", "")); // true
 //    - Build the final string by joining words from the reversed array with spaces between them.
 
 function reverseWords(sentence: string): string {
+
     let words: string[] = []; 
     let wordStart = -1;
 
     for (let i = 0; i < sentence.length; i++) {
+
         if (sentence[i] !== ' ' && wordStart === -1) {
             wordStart = i; 
         }
@@ -140,6 +145,7 @@ function reverseWords(sentence: string): string {
             wordStart = -1; 
         }
     }
+    
     let reversedWords = ''; 
     for (let i = words.length - 1; i >= 0; i--) {
         reversedWords += words[i]; 
@@ -152,6 +158,10 @@ function reverseWords(sentence: string): string {
  const sentence = "Hello world";
 const result = reverseWords(sentence);
 console.log(result); // Output: "world Hello"
+
+
+
+
 
 
 
